@@ -1,0 +1,225 @@
+<!-- Portfolio GitHub - Single file HTML
+     Instructions:
+     1) Remplacez la valeur de `GITHUB_USERNAME` dans le script JS (vers la fin) par votre pseudo GitHub.
+     2) Personnalisez le texte (nom, bio, liens sociaux) dans la section HERO.
+     3) Poussez ce fichier en tant que `index.html` dans un repo nommé `USERNAME.github.io` pour l'héberger via GitHub Pages.
+-->
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Votre nom</title>
+  <meta name="description" content="Portfolio technique - projets, contact et liens GitHub" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#94a3b8;--accent:#7c3aed;--glass:rgba(255,255,255,0.04)}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#071024 0%, #081428 60%);color:#e6eef8;line-height:1.5}
+
+    .container{max-width:1024px;margin:40px auto;padding:24px}
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between}
+
+    .brand{display:flex;align-items:center;gap:14px}
+    .avatar{width:72px;height:72px;border-radius:14px;background:linear-gradient(135deg,#2dd4bf,#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#04263b}
+    h1{margin:0;font-size:1.6rem}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+
+    nav{display:flex;gap:10px}
+    a.btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:600}
+    a.btn.primary{background:linear-gradient(90deg,var(--accent),#06b6d4);color:white;border:none}
+
+    .hero{display:grid;grid-template-columns:1fr 320px;gap:24px;margin-top:24px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:18px;box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+
+    .bio h2{margin:0 0 8px}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .badge{background:var(--glass);padding:6px 8px;border-radius:999px;font-size:0.85rem;color:var(--muted)}
+
+    .projects{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .project{background:rgba(255,255,255,0.02);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+    .project h3{margin:0 0 6px;font-size:1.05rem}
+    .meta{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:0.9rem}
+
+    footer{margin-top:32px;text-align:center;color:var(--muted);font-size:0.9rem}
+
+    /* Responsive */
+    @media (max-width:900px){.hero{grid-template-columns:1fr}nav{display:none}.avatar{width:64px;height:64px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="avatar">JD</div>
+        <div>
+          <h1 id="site-name">Votre Nom — Développeur</h1>
+          <p class="lead" id="short-bio">Développeur full‑stack • Machine Learning • APIs • Docker</p>
+        </div>
+      </div>
+
+      <nav>
+        <a class="btn" href="#projects">Projets</a>
+        <a class="btn" href="#about">À propos</a>
+        <a class="btn primary" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card bio">
+        <h2>Salut — je suis <span id="display-name">Votre Nom</span></h2>
+        <p>Je crée des APIs et des pipelines ML prêts pour la production. Ici, tu trouveras une sélection de mes projets open‑source, leurs descriptions et les liens directs vers les dépôts GitHub.</p>
+
+        <div class="badges" style="margin-top:12px">
+          <span class="badge">FastAPI</span>
+          <span class="badge">Python</span>
+          <span class="badge">Docker</span>
+          <span class="badge">AWS</span>
+          <span class="badge">LightGBM</span>
+        </div>
+
+        <div style="margin-top:16px">
+          <a id="github-link" class="btn" href="#" target="_blank">GitHub</a>
+          <a id="linkedin-link" class="btn" href="#" target="_blank">LinkedIn</a>
+          <a class="btn primary" href="#projects">Voir mes projets</a>
+        </div>
+
+        <div style="margin-top:16px;color:var(--muted)">
+          <strong>Astuce :</strong> modifie la variable <code>GITHUB_USERNAME</code> dans le script pour lier automatiquement tes repos.
+        </div>
+      </div>
+
+      <aside class="card" id="stats-card">
+        <h3 style="margin-top:0">Statut rapide</h3>
+        <p id="repo-count">Chargement des repos...</p>
+        <div style="margin-top:12px">
+          <h4 style="margin:0 0 8px">Top languages</h4>
+          <div id="top-langs" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+        </div>
+      </aside>
+    </section>
+
+    <main>
+      <section id="projects" style="margin-top:28px">
+        <h2 style="margin-bottom:12px">Projets récents</h2>
+        <div class="projects" id="projects-grid">
+          <!-- Les cartes projets seront injectées ici par JS -->
+        </div>
+      </section>
+
+      <section id="about" style="margin-top:28px">
+        <h2>À propos</h2>
+        <div class="card" style="margin-top:12px">
+          <p>Je conçois, développe et déploie des modèles de Machine Learning dans des environnements cloud. Je porte une attention particulière à la reproductibilité, au monitoring et à l'automatisation du déploiement (CI/CD & Docker).</p>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:28px">
+        <h2>Contact</h2>
+        <div class="card" style="margin-top:12px;display:flex;gap:12px;flex-direction:column">
+          <div>📫 Email : <a id="email-link" href="mailto:you@example.com">you@example.com</a></div>
+          <div>🔗 GitHub : <a id="github-profile" href="#">@username</a></div>
+          <div>💼 CV (PDF) : <a id="cv-link" href="#">Télécharger</a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Votre Nom — Développé avec ❤️</div>
+    </footer>
+  </div>
+
+  <script>
+    // --- CONFIGURATION : remplacez par votre pseudo GitHub ---
+    const GITHUB_USERNAME = 'YOUR_GITHUB_USERNAME'; // <-- mettez votre pseudo GitHub ici
+
+    // Personnalisation rapide (modifiez si besoin)
+    document.getElementById('display-name').textContent = 'Votre Nom';
+    document.getElementById('site-name').textContent = 'Votre Nom — Portfolio';
+    document.getElementById('short-bio').textContent = 'Développeur full‑stack • APIs • Machine Learning • Docker';
+    document.getElementById('github-link').href = `https://github.com/${GITHUB_USERNAME}`;
+    document.getElementById('github-profile').href = `https://github.com/${GITHUB_USERNAME}`;
+    document.getElementById('github-profile').textContent = `@${GITHUB_USERNAME}`;
+    document.getElementById('linkedin-link').href = '#';
+    document.getElementById('email-link').href = 'mailto:you@example.com';
+    document.getElementById('cv-link').href = '#';
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Récupération automatique des repos GitHub (publics) ---
+    async function fetchRepos(username){
+      try{
+        const resp = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+        if(!resp.ok) throw new Error('Impossible de récupérer les repos');
+        const repos = await resp.json();
+        return repos.sort((a,b)=> b.stargazers_count - a.stargazers_count);
+      }catch(e){
+        console.error(e);
+        return null;
+      }
+    }
+
+    function renderProjects(repos){
+      const grid = document.getElementById('projects-grid');
+      grid.innerHTML = '';
+      if(!repos || repos.length===0){
+        grid.innerHTML = '<div class="project card">Aucun dépôt trouvé. Vérifiez le pseudo GitHub dans le script.</div>';
+        document.getElementById('repo-count').textContent = '0 repos';
+        return;
+      }
+
+      const top = repos.slice(0,8);
+      top.forEach(r=>{
+        const div = document.createElement('article');
+        div.className = 'project';
+        div.innerHTML = `
+          <h3><a href="${r.html_url}" target="_blank">${r.name}</a></h3>
+          <p style="color:var(--muted);font-size:0.95rem">${r.description ? r.description : ''}</p>
+          <div class="meta" style="margin-top:8px">
+            <span>${r.language ? r.language : ''}</span>
+            <span>★ ${r.stargazers_count}</span>
+            <a style="margin-left:auto;color:var(--muted);text-decoration:none" href="${r.html_url}" target="_blank">Voir sur GitHub →</a>
+          </div>
+        `;
+        grid.appendChild(div);
+      });
+
+      document.getElementById('repo-count').textContent = `${repos.length} dépôts publics`;
+
+      // Top languages simple count
+      const langs = {};
+      repos.forEach(r=>{ if(r.language) langs[r.language] = (langs[r.language]||0)+1 });
+      const langContainer = document.getElementById('top-langs');
+      langContainer.innerHTML = '';
+      Object.entries(langs).sort((a,b)=>b[1]-a[1]).slice(0,6).forEach(([lang,c])=>{
+        const s = document.createElement('span');
+        s.className='badge'; s.textContent = `${lang} (${c})`;
+        langContainer.appendChild(s);
+      });
+    }
+
+    // Exécution
+    (async function(){
+      if(GITHUB_USERNAME && GITHUB_USERNAME !== 'YOUR_GITHUB_USERNAME'){
+        const repos = await fetchRepos(GITHUB_USERNAME);
+        renderProjects(repos);
+      } else {
+        document.getElementById('projects-grid').innerHTML = `
+          <div class="project card">
+            <h3>Exemple de projet</h3>
+            <p style="color:var(--muted)">Remplacez <code>GITHUB_USERNAME</code> par votre pseudo pour afficher vos dépôts automatiquement.</p>
+            <div class="meta"><span>Python</span><span>★ 12</span><a style="margin-left:auto;color:var(--muted);text-decoration:none" href="#">Voir sur GitHub →</a></div>
+          </div>
+        `;
+        document.getElementById('repo-count').textContent = 'Pseudo GitHub non configuré';
+      }
+    })();
+  </script>
+</body>
+</html>

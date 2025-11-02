@@ -23,6 +23,44 @@
       margin: 0;
       font-size: 2rem;
     }
+       /* Section de présentation */
+    .about {
+      background-color: #fff;
+      max-width: 900px;
+      margin: 2rem auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .about img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #00bfff;
+    }
+
+    .about h2 {
+      margin: 0.5rem 0;
+      font-size: 1.6rem;
+      color: #222;
+    }
+
+    .about p {
+      color: #555;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0.5rem auto 1rem;
+    }
+
+    .about a {
+      color: #00bfff;
+      text-decoration: none;
+    }
+
 
     .container {
       display: grid;
@@ -83,7 +121,23 @@
     <h1>Mes Projets GitHub</h1>
     <p>Découvrez mes réalisations personnelles</p>
   </header>
-
+  
+  <!-- Section de présentation -->
+  
+  <section class="about">
+    <img src="images/moi.jpg" alt="Photo de profil">
+    <h2>À propos de moi</h2>
+    <p>
+      Bonjour ! Je suis <strong>David Mouquet</strong>, passionné par le développement web et la création de projets techniques. 
+      J’aime apprendre, concevoir et partager mes réalisations open source.  
+      Sur cette page, vous trouverez une sélection de mes projets hébergés sur GitHub.
+    </p>
+    <p>
+      💼 Vous pouvez me retrouver sur 
+      <a href="https://github.com/davidmouquetGit" target="_blank">mon profil GitHub</a>.
+    </p>
+  </section>
+  
   <main class="container">
     <!-- Exemple de carte (à dupliquer 6 fois pour tes projets) -->
     <a href="https://github.com/davidmouquetGit/Energetic-performance-explainability" target="_blank" class="card">
@@ -140,6 +194,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
